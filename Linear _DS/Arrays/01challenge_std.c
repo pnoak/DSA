@@ -20,7 +20,7 @@ int main()
     printf("Enter number of Elements:");
     if(scanf("%d",&base_size)!=1 || (base_size <=0))
     {
-        fprintf(stderr,"Error: Invalid values to tak input\n");
+        fprintf(stderr,"Error: Invalid values to take input\n");
         return EXIT_FAILURE;
     }
 
