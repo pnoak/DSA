@@ -14,8 +14,7 @@ Twist: Inside the function, calculate the exact length of both strings, allocate
 Objective: Contrast the lifespans and addresses of static, stack, and heap memory.
 
 **→ Task:**
-*  Write a program that declares:
-* A global initialized variable (Static/Data segment).
+*  Write a program that declares: A global initialized variable (Static/Data segment).
 * A local variable inside main (Stack segment).
 * A dynamically allocated variable using malloc() (Heap segment).
 
