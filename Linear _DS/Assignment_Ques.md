@@ -1,7 +1,7 @@
-1)Assignment 1: The Dynamic Integer Array (Warm-up)Objective: Handle basic dynamic allocation, resizing, and memory cleanup.Task: Write a program that prompts the user to enter N integers. Allocate memory dynamically for these N integers.Twist: After reading the initial N integers, ask the user for M additional integers. Resize the allocated memory block to hold N + M elements without losing the original data. Print the entire final array, and then free all allocated memory.
+##1)Assignment 1: The Dynamic Integer Array (Warm-up)Objective: Handle basic dynamic allocation, resizing, and memory cleanup.Task: Write a program that prompts the user to enter N integers. Allocate memory dynamically for these N integers.Twist: After reading the initial N integers, ask the user for M additional integers. Resize the allocated memory block to hold N + M elements without losing the original data. Print the entire final array, and then free all allocated memory.
 
 
-2) Assignment 2: The String Concatenation Engine (Intermediate)
+##2) Assignment 2: The String Concatenation Engine (Intermediate)
 Objective: Avoid buffer overflows by calculating memory requirements dynamically at runtime.
 
 Task: Create a function with the signature char* dynamic_concat(const char* str1, const char* str2).
@@ -9,7 +9,7 @@ Task: Create a function with the signature char* dynamic_concat(const char* str1
 Twist: Inside the function, calculate the exact length of both strings, allocate a precise amount of memory on the heap to store the combined string (plus the null-terminator \0), concatenate them, and return the pointer. In your main function, call this engine, print the result, and ensure no memory leaks occur.
 
 
-3)Assignment 3: Memory Layout Visualizer (Advanced)
+##3)Assignment 3: Memory Layout Visualizer (Advanced)
 Objective: Contrast the lifespans and addresses of static, stack, and heap memory.
 
 Task: Write a program that declares:
