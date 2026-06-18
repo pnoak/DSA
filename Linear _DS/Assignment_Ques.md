@@ -1,8 +1,8 @@
-## 1)Assignment 1: The Dynamic Integer Array (Warm-up)Objective:
+## Assignment 1: The Dynamic Integer Array (Warm-up)Objective:
  Handle basic dynamic allocation, resizing, and memory cleanup.Task: Write a program that prompts the user to enter N integers. Allocate memory dynamically for these N integers.Twist: After reading the initial N integers, ask the user for M additional integers. Resize the allocated memory block to hold N + M elements without losing the original data. Print the entire final array, and then free all allocated memory.
 
 
-## 2) Assignment 2: The String Concatenation Engine (Intermediate)
+## Assignment 2: The String Concatenation Engine (Intermediate)
 Objective: Avoid buffer overflows by calculating memory requirements dynamically at runtime.
 
 Task: Create a function with the signature char* dynamic_concat(const char* str1, const char* str2).
@@ -10,20 +10,18 @@ Task: Create a function with the signature char* dynamic_concat(const char* str1
 Twist: Inside the function, calculate the exact length of both strings, allocate a precise amount of memory on the heap to store the combined string (plus the null-terminator \0), concatenate them, and return the pointer. In your main function, call this engine, print the result, and ensure no memory leaks occur.
 
 
-## 3)Assignment 3: Memory Layout Visualizer (Advanced)
+## Assignment 3: Memory Layout Visualizer (Advanced)
 Objective: Contrast the lifespans and addresses of static, stack, and heap memory.
 
-* *Task: Write a program that declares:
+** Task:
+*  Write a program that declares:
+* A global initialized variable (Static/Data segment).
+* A local variable inside main (Stack segment).
+* A dynamically allocated variable using malloc() (Heap segment).
 
-A global initialized variable (Static/Data segment).
+** Twist: Print the hex memory addresses of all three variables. Write a secondary function that attempts to return the pointer of a local variable created inside it back to main, and observe what happens when you try to access it.
 
-A local variable inside main (Stack segment).
-
-A dynamically allocated variable using malloc() (Heap segment).
-
-Twist: Print the hex memory addresses of all three variables. Write a secondary function that attempts to return the pointer of a local variable created inside it back to main, and observe what happens when you try to access it.
-
-4)Assignment 4: Building a Fixed-Size Array Container
+## Assignment 4: Building a Fixed-Size Array Container
 Instead of moving straight to complex structures, let's write a clean, modular program that mimics how high-level languages handle arrays safely.
 
 Your Task:
