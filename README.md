@@ -7,6 +7,9 @@ A comprehensive collection of fundamental Data Structures and Algorithms, featur
 * **Trees:** Binary Trees, Binary Search Trees (BST), AVL Trees, and Tries.
 * **File Management & I/O:** File creation, reading/writing streams, serialization, and basic file system operations.
 
+## 🔗  Links:
+* **Linear DS** [Assignment Questions](https://github.com/pnoak/DSA/blob/main/Linear%20_DS/Assignment_Ques.md)
+  
 ## 🛠️ Tech Stack
 * **Language:** C,CPP
 * **Tools:** GCC, Make
