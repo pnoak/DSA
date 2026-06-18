@@ -1,4 +1,5 @@
-## 1)Assignment 1: The Dynamic Integer Array (Warm-up)Objective: Handle basic dynamic allocation, resizing, and memory cleanup.Task: Write a program that prompts the user to enter N integers. Allocate memory dynamically for these N integers.Twist: After reading the initial N integers, ask the user for M additional integers. Resize the allocated memory block to hold N + M elements without losing the original data. Print the entire final array, and then free all allocated memory.
+## 1)Assignment 1: The Dynamic Integer Array (Warm-up)Objective:
+ Handle basic dynamic allocation, resizing, and memory cleanup.Task: Write a program that prompts the user to enter N integers. Allocate memory dynamically for these N integers.Twist: After reading the initial N integers, ask the user for M additional integers. Resize the allocated memory block to hold N + M elements without losing the original data. Print the entire final array, and then free all allocated memory.
 
 
 ## 2) Assignment 2: The String Concatenation Engine (Intermediate)
@@ -12,7 +13,7 @@ Twist: Inside the function, calculate the exact length of both strings, allocate
 ## 3)Assignment 3: Memory Layout Visualizer (Advanced)
 Objective: Contrast the lifespans and addresses of static, stack, and heap memory.
 
-Task: Write a program that declares:
+* *Task: Write a program that declares:
 
 A global initialized variable (Static/Data segment).
 
