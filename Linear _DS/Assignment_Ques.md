@@ -94,3 +94,14 @@ Implement a Traversal Display Function: Write void display(struct node* head) th
 
 Implement a Master Cleanup Function: Write void free_list(struct node* head) that loops through the 
                             entire list and frees every node individually so you leave zero active blocks on the heap.
+
+8) Assignment 8: The Arbitrary Insertion Challenge
+Your Task:
+Modify your existing Singly Linked List codebase by adding a highly robust insertion function.
+
+Requirements:
+Implement the Insert Function: Write bool insertAtPosition(Node headRef, int position, int value);.
+
+Interactive Menu: Add a new option to your main() loop: 4) Insert at Position.
+
+Scan with Validation: Prompt the user for both the target position (index) and the integer value. Validate both inputs using scanf safety patterns.
