@@ -8,7 +8,7 @@ A comprehensive collection of fundamental Data Structures and Algorithms, featur
 * **File Management & I/O:** File creation, reading/writing streams, serialization, and basic file system operations.
 
 ## 🔗  Links:
-1. **Linear DS** [Assignment Questions](https://github.com/pnoak/DSA/blob/main/Linear%20_DS/Assignment_Ques.md)
+1. **Linear DS** [Assignment Questions](/Linear%20_DS/Assignment_Ques.md)
   
 ## 🛠️ Tech Stack
 * **Language:** C,CPP
