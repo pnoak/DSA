@@ -13,13 +13,13 @@ Twist: Inside the function, calculate the exact length of both strings, allocate
 ## Assignment 3: Memory Layout Visualizer (Advanced)
 Objective: Contrast the lifespans and addresses of static, stack, and heap memory.
 
-→ ** Task: **
+**→ Task:**
 *  Write a program that declares:
 * A global initialized variable (Static/Data segment).
 * A local variable inside main (Stack segment).
 * A dynamically allocated variable using malloc() (Heap segment).
 
-→ ** Twist: ** 
+**→ Twist:** 
 Print the hex memory addresses of all three variables. Write a secondary function that attempts to return the pointer of a local variable created inside it back to main, and observe what happens when you try to access it.
 
 ## Assignment 4: Building a Fixed-Size Array Container
