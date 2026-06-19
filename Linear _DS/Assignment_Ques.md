@@ -73,7 +73,8 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
                             entire list and frees every node individually so you leave zero active blocks on the heap.
 
 ## Assignment 8: The Arbitrary Insertion Challenge
-Your Task:
+Your Task:  
+
 Modify your existing Singly Linked List codebase by adding a highly robust insertion function.
 
 Requirements:
