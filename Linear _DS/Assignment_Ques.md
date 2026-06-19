@@ -67,17 +67,12 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
 **Your Objectives:**
 1. **Define the Node Structure:** Use the standard struct node pattern.
 2. **Implement an Append Function:** Write void append(struct node head_ref, int value).
-3. **Hint:**
-     We pass a pointer-to-a-pointer (struct node) because if the list is empty, the function 
-        needs to directly modify the head pointer inside main().
-
-Implement a Traversal Display Function: Write void display(struct node* head) that uses a while (current != NULL) 
-                                        loop to slide forward and print every active node's data field sequentially.
-
-Implement a Master Cleanup Function: Write void free_list(struct node* head) that loops through the 
+3. **Hint:** We pass a pointer-to-a-pointer (struct node) because if the list is empty, the function needs to directly modify the head pointer inside main().
+4. **Implement a Traversal Display Function:** Write void display(struct node* head) that uses a while (current != NULL) loop to slide forward and print every active node's data field sequentially.
+5. **Implement a Master Cleanup Function:** Write void free_list(struct node* head) that loops through the 
                             entire list and frees every node individually so you leave zero active blocks on the heap.
 
-8) Assignment 8: The Arbitrary Insertion Challenge
+## Assignment 8: The Arbitrary Insertion Challenge
 Your Task:
 Modify your existing Singly Linked List codebase by adding a highly robust insertion function.
 
