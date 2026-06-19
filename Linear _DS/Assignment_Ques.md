@@ -62,16 +62,13 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
 6. **Hint:** To print the second node's data using only first, you will look at first->next->data.
 7. **Clean Up:** Manually free() all three nodes before exiting.
 
-7) Assignment 7: Building a Dynamic Single Linked List Module
-Following your rules, write this program out. When you upload it, I will first provide a complete
-        microscopic list of all minute bugs, and then present the industry-standard improvements.
+## Assignment 7: Building a Dynamic Single Linked List Module
 
-Your Objectives:
-Define the Node Structure: Use the standard struct node pattern.
-
-Implement an Append Function: Write void append(struct node head_ref, int value).
-
-Hint: We pass a pointer-to-a-pointer (struct node) because if the list is empty, the function 
+**Your Objectives:**
+1. **Define the Node Structure:** Use the standard struct node pattern.
+2. **Implement an Append Function:** Write void append(struct node head_ref, int value).
+3. **Hint:**
+     We pass a pointer-to-a-pointer (struct node) because if the list is empty, the function 
         needs to directly modify the head pointer inside main().
 
 Implement a Traversal Display Function: Write void display(struct node* head) that uses a while (current != NULL) 
