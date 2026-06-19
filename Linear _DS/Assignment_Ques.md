@@ -45,29 +45,22 @@ Write a modular C program that implements a custom integer Vector.
 4. Implement Display: Write a function to print the current size, capacity, and active elements cleanly.
 5. Implement Cleanup: Write a function to free the heap memory when done to prevent leaks
 
-6)Assignment 6: Manual Node Assembly (The "Hard" Way)
-Before we write loops or automated insertion functions, your task is to manually create three individual nodes on the heap, link them together by explicitly assigning their next pointers, and print their values.
-
+## Assignment 6: Manual Node Assembly (The "Hard" Way)
+Write loops or automated insertion functions, your task is to manually create three individual nodes on the heap, link them together by explicitly assigning their next pointers, and print their values.
 This will force you to see exactly how pointers "chain" from one memory chunk to another.
 
-Your Objectives:
-Define the Structure: Declare the struct Node as shown above.
+**Your Objectives:**
+1. **Define the Structure:** Declare the struct Node as shown above.
+2. **Allocate Nodes:** Inside main(), create three distinct pointers: struct Node* first, struct Node* second, and struct Node* third. Allocate memory for each one individually using malloc().
+3. **Assign Data:** Give each node a unique number (e.g., first->data = 10;, etc.).
+4. **Wire Them Together (The Core Step):** 
+   * Make first->next point to the address of second.
+   * Make second->next point to the address of third.
+   * Make third->next point to NULL (marking the end of the line).
+5. **Print via the Chain:** Print the values of all three nodes, but here is the twist: you are only allowed to use the variable first inside your print statements.
 
-Allocate Nodes: Inside main(), create three distinct pointers: struct Node* first, struct Node* second, and struct Node* third. Allocate memory for each one individually using malloc().
-
-Assign Data: Give each node a unique number (e.g., first->data = 10;, etc.).
-
-Wire Them Together (The Core Step): * Make first->next point to the address of second.
-
-Make second->next point to the address of third.
-
-Make third->next point to NULL (marking the end of the line).
-
-Print via the Chain: Print the values of all three nodes, but here is the twist: you are only allowed to use the variable first inside your print statements.
-
-Hint: To print the second node's data using only first, you will look at first->next->data.
-
-Clean Up: Manually free() all three nodes before exiting.
+6. **Hint:** To print the second node's data using only first, you will look at first->next->data.
+7. **Clean Up:** Manually free() all three nodes before exiting.
 
 7) Assignment 7: Building a Dynamic Single Linked List Module
 Following your rules, write this program out. When you upload it, I will first provide a complete
