@@ -38,9 +38,11 @@ Instead of moving straight to complex structures, let's write a clean, modular p
 ## Assignment 5: Building a Dynamic Vector Container
 Write a modular C program that implements a custom integer Vector. 
 
-* **Requirements:**\
+* **Requirements:**
 
-        1. **Define the Structure:** Create a struct MyVector holding int *data, int size, and int capacity.\
+
+        1. **Define the Structure:** Create a struct MyVector holding int *data, int size, and int capacity.
+
         2. **Implement Initialization:** Write a function void vector_init(struct MyVector *v, int initial_capacity) that allocates the initial heap memory using malloc.
         3. **Implement Append:** Write int vector_append(struct MyVector *v, int value) that adds elements and automatically doubles the capacity using realloc if the vector fills up.
 
