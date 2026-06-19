@@ -77,7 +77,7 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
 Modify your existing Singly Linked List codebase by adding a highly robust insertion function.
 
 **Requirements:**
-1. ***Implement the Insert Function:** Write bool insertAtPosition(Node headRef, int position, int value);.
+1. **Implement the Insert Function:** Write bool insertAtPosition(Node headRef, int position, int value);.
 
 2. **Interactive Menu:** Add a new option to your main() loop: 4) Insert at Position.
 
