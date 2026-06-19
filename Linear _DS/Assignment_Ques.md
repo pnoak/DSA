@@ -73,13 +73,12 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
                             entire list and frees every node individually so you leave zero active blocks on the heap.
 
 ## Assignment 8: The Arbitrary Insertion Challenge
-Your Task:  
-
+**Your Task:**  
 Modify your existing Singly Linked List codebase by adding a highly robust insertion function.
 
-Requirements:
-Implement the Insert Function: Write bool insertAtPosition(Node headRef, int position, int value);.
+**Requirements:**
+1. ***Implement the Insert Function:** Write bool insertAtPosition(Node headRef, int position, int value);.
 
-Interactive Menu: Add a new option to your main() loop: 4) Insert at Position.
+2. **Interactive Menu:** Add a new option to your main() loop: 4) Insert at Position.
 
-Scan with Validation: Prompt the user for both the target position (index) and the integer value. Validate both inputs using scanf safety patterns.
+3. **Scan with Validation:** Prompt the user for both the target position (index) and the integer value. Validate both inputs using scanf safety patterns.
