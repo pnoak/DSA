@@ -37,7 +37,7 @@ void freeList(Node* head);
 int main()
 {
         Node* head = NULL;
-        int option =1;
+        int option =0;
 
         printf("--------------- Dynamic Single LinkedList Implementation ----------------------\n");
         while(true)
