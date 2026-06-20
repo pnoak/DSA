@@ -221,3 +221,8 @@ void freeList(Node* head)
     }
     printf("Done..\n");
 }
+
+void ref()
+{
+    return;
+}
