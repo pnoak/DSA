@@ -72,7 +72,7 @@ int main()
             if(scanf("%d %d",&val,&position)!=2)
             {
                 fprintf(stderr,"Error: invalid Input from user.\n");
-                free(head);
+                freeList(head);
                 return EXIT_FAILURE;
             }
 
@@ -138,7 +138,7 @@ bool insertAtPosition(Node** headRef, int position, int value)
     //scenario 3: at middle or at End/tail
     Node* current = *headRef;
     //traverse list till position 
-    for(int i=0;i<(position-1); ++i)
+    for(int i=0;current != NULL && i<(position-1); ++i)
     {
         current = current->next;
     }
@@ -146,7 +146,6 @@ bool insertAtPosition(Node** headRef, int position, int value)
     if(current == NULL)
     {
         printf("Error: Position out of bound\n");
-        free(newNode);
         return false;
     }
     newNode->next = current->next;
@@ -219,5 +218,7 @@ void freeList(Node* head)
         free(current);
         current = next;
     }
+    head = NULL;
+
     printf("Done..\n");
 }
