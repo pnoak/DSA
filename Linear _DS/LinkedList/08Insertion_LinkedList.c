@@ -90,3 +90,123 @@ int main()
 
     return EXIT_SUCCESS;
 }
+
+
+bool inserAtPosition(Node** headRef, int position, int value)
+{
+    //verify the position is positive
+    if(position < 0)
+    {
+        return false;
+    }
+    //Make a new node
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if(newNode==NULL)
+    {
+        fprintf(stderr,"Error:Memory allocation failed..\nExiting from program safely..\n");
+        return false;
+    }
+
+    // add the data to the newNode->data
+    newNode->data = value;
+    newNode->next = NULL;
+
+    //scenario1: if there is empty List then make a new node as First 
+    if(*headRef == NULL)
+    {
+        *headRef = newNode;
+        return true;
+    }
+    //scenario 2: if list is not empty
+    else if(position == 0)
+    {
+        newNode->next = *headRef;
+        *headRef = newNode;
+        return true;
+    }
+    //scenario 3: at middle or at End/tail
+    Node* current = *headRef;
+    //traverse list till position 
+    for(int i=0;i<(position-1); ++i)
+    {
+        current = current->next;
+    }
+    //check for invalid Position 
+    if(current == NULL)
+    {
+        printf("Error: Position out of bound\n");
+        free(newNode);
+        return false;
+    }
+    newNode->next = current->next;
+    current = newNode;
+
+    return true;
+
+}
+
+
+bool append(Node** headRef, int value)
+{
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if(newNode == NULL)
+    {
+        fprintf(stderr,"Error: Memory allocation failed\n");
+        return false;
+    }
+    
+    newNode ->data = value;
+    newNode->next = NULL;
+
+    if(*headRef == NULL)
+    {
+        *headRef = newNode;
+    }
+    else
+    {
+        Node* current = *headRef;
+        while(current->next != NULL)
+        {
+            current = current->next;
+        }
+
+        current ->next = newNode;
+    }
+    return true;
+
+}
+
+
+void display(Node* head)
+{
+    if(head == NULL)
+    {
+        printf("No elements in the list");
+        return;
+    }
+    Node* nodePtr = head;
+    int cnt=0;
+    printf("------------ List Status --------------\n");
+    while(nodePtr != NULL)
+    {
+        printf("Node %d: %d",cnt,nodePtr->data);
+        nodePtr = nodePtr->next;
+        ++cnt;
+    }
+    printf("---------------------------------------\n");
+}
+
+void freeList(Node* head)
+{
+    Node* current = head;
+    Node* next = NULL;
+    printf("\nClearing the heap memory..\n");
+
+    while(current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    printf("Done..\n");
+}
