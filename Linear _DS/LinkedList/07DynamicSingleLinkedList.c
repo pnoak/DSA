@@ -119,6 +119,7 @@ bool append(Node** headRef, int value)
                 }
                 
                 // connect new node to last node 
+             
                 current->next = newNode;
         }
         return true;

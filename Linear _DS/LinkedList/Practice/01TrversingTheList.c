@@ -70,11 +70,22 @@ bool append(Node** headRef, int val)
 
     if(*headRef==NULL)
     {
-        
+        *headRef = newNode;
     }
-
+    else
+    {
+        Node * current  = *headRef;
+        while(current->next != NULL)
+        {
+            current = current->next;
+        }
+        current->next = newNode;
+    }
+    return true;
 }
+
+
 void display(Node* head)
 {
-
+    printf("")
 }
