@@ -22,7 +22,7 @@ typedef struct node{
 }Node;
 
 // Function Declarations 
-bool inserAtPosition(Node** headRef, int position, int value);
+bool insertAtPosition(Node** headRef, int position, int value);
 bool append(Node** headRef, int value);
 void display(Node* head);
 void freeList(Node* head);
@@ -69,14 +69,14 @@ int main()
             int val=0;
             int position =0;
             printf("Enter Value followed by Position(Index) to Append: ");
-            if(scanf("%d %d",&val,&position)!=1)
+            if(scanf("%d %d",&val,&position)!=2)
             {
                 fprintf(stderr,"Error: invalid Input from user.\n");
                 free(head);
                 return EXIT_FAILURE;
             }
 
-            if(inserAtPosition(&head,position,val))
+            if(insertAtPosition(&head,position,val))
             {
                 printf("Append at specified position Sucessful \n");
             }
@@ -86,13 +86,24 @@ int main()
             }
 
         }
+        else if(option==3)
+        {
+            display(head);
+        }
+        else if(option==4)
+        {
+            printf("Entering the exit Sequence..\n");
+            freeList(head);
+            printf("Done..\n");
+            return EXIT_SUCCESS;
+        }
     }
 
     return EXIT_SUCCESS;
 }
 
 
-bool inserAtPosition(Node** headRef, int position, int value)
+bool insertAtPosition(Node** headRef, int position, int value)
 {
     //verify the position is positive
     if(position < 0)
@@ -139,7 +150,7 @@ bool inserAtPosition(Node** headRef, int position, int value)
         return false;
     }
     newNode->next = current->next;
-    current = newNode;
+    current->next = newNode;
 
     return true;
 
@@ -189,7 +200,7 @@ void display(Node* head)
     printf("------------ List Status --------------\n");
     while(nodePtr != NULL)
     {
-        printf("Node %d: %d",cnt,nodePtr->data);
+        printf("Node %d: %d\n",cnt,nodePtr->data);
         nodePtr = nodePtr->next;
         ++cnt;
     }
