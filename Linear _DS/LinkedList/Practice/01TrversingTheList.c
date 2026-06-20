@@ -50,9 +50,14 @@ int main()
             if(append(&head,value))
             {
                 printf("Append Sucess..\n");
-
             }
+            else
+                printf("Append Failed..\nplease try agin\n");
+        }
 
+        case 2:
+        {
+            
         }
     }
 }
