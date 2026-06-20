@@ -11,7 +11,7 @@
     struct node* next; 
  }Node;
 
-bool append(Node* head, int val);
+bool append(Node** headRef, int val);
 void display(Node* head);
 
 int main()
@@ -31,13 +31,6 @@ int main()
     {
         case 1:
         {
-            head = (Node*)malloc(sizeof(Node));
-            if(head == NULL)
-            {
-                printf("Error: Memory allocatioin failed\n");
-                return EXIT_FAILURE;    
-            }
-
             printf("Enter value to append: ");
             if(scanf("%d",&value) !=1)
             {
@@ -60,4 +53,28 @@ int main()
             
         }
     }
+    return EXIT_SUCCESS;
+}
+
+bool append(Node** headRef, int val)
+{
+    Node * newNode = (Node *)malloc(sizeof(Node));
+    if(newNode == NULL)
+    {
+        fprint(stderr,"Error: Memory initilization failed\n");
+        return false;
+    }
+
+    newNode->intData = val;
+    newNode->next = NULL;
+
+    if(*headRef==NULL)
+    {
+        
+    }
+
+}
+void display(Node* head)
+{
+
 }
