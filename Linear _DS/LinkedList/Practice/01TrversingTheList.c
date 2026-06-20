@@ -34,18 +34,25 @@ int main()
             head = (Node*)malloc(sizeof(Node));
             if(head == NULL)
             {
-                printf("Error: Memory allocatioin failed");
+                printf("Error: Memory allocatioin failed\n");
                 return EXIT_FAILURE;    
             }
 
             printf("Enter value to append: ");
             if(scanf("%d",&value) !=1)
             {
-                fprintf(stderr,"Error: inavlid Input..");
+                fprintf(stderr,"Error: inavlid Input..\n");
                 free(head);
                 head = NULL;
                 return EXIT_FAILURE;
             }
+
+            if(append(&head,value))
+            {
+                printf("Append Sucess..\n");
+                
+            }
+
         }
     }
 }
