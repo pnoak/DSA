@@ -48,7 +48,7 @@ int main()
                         fprintf(stderr, "Error: Invalid input ...\n");
                         freeList(head);
                         return EXIT_FAILURE;
-                }
+                }  
 
                 if(option == 1)
                 {
