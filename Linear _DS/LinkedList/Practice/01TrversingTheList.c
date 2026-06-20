@@ -50,7 +50,7 @@ int main()
             if(append(&head,value))
             {
                 printf("Append Sucess..\n");
-                
+
             }
 
         }
