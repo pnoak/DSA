@@ -1,0 +1,3 @@
+/*  
+    C code to trvers the list and count the number of nodes in the list 
+ */
