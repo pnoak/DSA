@@ -85,7 +85,18 @@ void display(int * arr)
     cout << "------------------------------------------" <<endl;
 }
 
-bool append(safeArray arr, int val)
+bool append(safeArray* array,int value)
 {
-    
+    if(array->currentsize < maxSize)
+    {
+        array->data[array->currentsize] = value;
+        ++array->currentsize;
+        return true;
+    }
+    else
+    {
+        cout <<"Out of memory..." << endl;
+        return false;
+
+    }
 }
