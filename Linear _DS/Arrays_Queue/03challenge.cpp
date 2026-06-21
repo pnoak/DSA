@@ -32,10 +32,60 @@ class safeArray{
 };
 
 bool append(safeArray* array,int value);
-void display();
+void display(int* array);
 
 int main()
 {
-     
+    safeArray arr = {.currentsize=0};
+    cout << "\n\n-------------- Safe Array Container Implementation ------------------ " << endl;
+    while(1)
+    {
+        int option=0;
+        cout << "Options to select Functionality:" << endl <<
+            "1) Append\t2)Display\t3) Exit\n"<< "Select Option: ";
+        cin >> option;
+        
+        // Check for append selection and append the value in the Queue
+        if(option ==1)
+        {
+            int val,status;
+            cout << "Enter value to append: "; cin>>val;
 
+            if(append(&arr,val))
+            {
+                cout << "Append Sucessful .." << endl;
+            }
+            else
+            {
+                cout << "Append Failed" << endl;
+            }
+        }
+        //Check for display option and display the Queue
+        else if(option == 2)
+        {
+            display(arr.data);
+        }
+        //Check for Exit selection and safely exit from the program 
+        else if(option == 3)
+        {
+            display(arr.data);
+            break;
+        }
+    }
+    return EXIT_SUCCESS;
+}
+
+void display(int * arr)
+{
+    cout << "\n---------- Safe Array Display ----------" << endl;
+    for(int i=0; i<maxSize;++i)
+    {
+        cout << "safeArrya->element " << i << ": " << arr[i] << endl;
+    }
+    cout << "------------------------------------------" <<endl;
+}
+
+bool append(safeArray arr, int val)
+{
+    
 }
