@@ -24,20 +24,19 @@ typedef struct Node{
 }node;
 
 void displayList(node* head);
-bool append(node* head,int val);
+bool append(node** headRef,int val);
 bool insertAtPosition(node** headRef,int val, int position);
 bool deleteAtPosition(node ** headRef,int position);
 void freeList(node* head);
 
 int main()
 {
-    int position= 0;
-    int value = 0;
     int option = 0;
-    
+    node* head = NULL;
+
     printf("\n\n-------------- Node deletion imlementation -------------------\n");
 
-    node * head = NULL;
+    
     
     while(true)
     {
@@ -50,13 +49,8 @@ int main()
 
         if(option == 1)
         {
-            node * newNode = (node* )malloc(sizeof(node));
-            if(newNode == NULL)
-            {
-                fprintf(stderr,"Error: Memory allocation Failed..\nPlease Try again..\n\n");
-                return EXIT_FAILURE;
-            }
-
+            int value=0;
+            
             printf("Enter Value: ");
             if(scanf("%d",&value)!= 1)
             {
@@ -64,12 +58,16 @@ int main()
                 return EXIT_FAILURE;
             }
 
+            if(append(&head,value))
+            {
+
+            }
         }
     }
 }
 
 void displayList(node* head);
-bool append(node* head,int val);
+bool append(node** headRef,int val);
 bool insertAtPosition(node** headRef,int val, int position);
 bool deleteAtPosition(node ** headRef,int position);
 void freeList(node* head);
