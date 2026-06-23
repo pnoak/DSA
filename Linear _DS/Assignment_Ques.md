@@ -91,7 +91,7 @@ Incorporate a robust node deletion function into your current working Singly Lin
 true on successful deletion and false if the position is out of bounds or the list is completely empty.
 
    2. Interactive Menu Expansion: Add a new option to your main() loop: 
-    4) Delete at Position (and shift your exit option to 5).
+    4) Delete at Position .
 
    3. Scan Validation: Prompt the user for the target index to delete and protect
      the entry using your standard scanf verification logic.
