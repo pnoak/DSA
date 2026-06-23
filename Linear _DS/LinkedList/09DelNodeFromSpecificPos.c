@@ -47,6 +47,7 @@ int main()
             return EXIT_FAILURE;
         }
 
+        //Check to append the node
         if(option == 1)
         {
             int value=0;
@@ -60,14 +61,114 @@ int main()
 
             if(append(&head,value))
             {
+                printf("\n Append Sucess..\n");
+            }
+            else
+                printf("\nAppend Fialed..\n please try again..\n\n");
+        }
 
+        // Check for insertion of node at a perticular position 
+        else if(option == 2)
+        {
+            int val=0,position=0;
+            printf("\nEnter the position: ");
+            if(scanf("%d",&position)!=1)
+            {
+                fprintf(stderr,"Error: Invalid Input from User.\n\n ");
+                return EXIT_FAILURE;
+            }
+            printf("\nEnter the Value: ");
+            if(scanf("%d",&val)!=1)
+            {
+                fprintf(stderr,"Error: Invalid Input from User.\n\n ");
+                return EXIT_FAILURE;
+            }
+
+            if(insertAtPosition(&head,val,position))
+            {
+                printf("\nNode added sucess..\n");
+            }
+            else{
+                printf("\nNode allocation failed..\n");
             }
         }
+
+        // Check for node deletion option 
+        else if(option == 3)
+        {
+            int pos=0;
+            
+            printf("\nEnter the position: ");
+            if(scanf("%d",&pos)!=1)
+            {
+                fprintf(stderr,"Error: Invalid Input from User.\n\n ");
+                return EXIT_FAILURE;
+            }
+
+            if(deleteAtPosition(&head,pos))
+            {
+                printf("\nDeletion sucessful\n");
+            }
+            else{
+                printf("\nDeetion of Ndoe Failed..\n\n");            }
+        }
+
+        //Check for Display functionality selection
+        else if(option == 4)
+        {
+            displayList(head);
+        }
+
+        // Check for exit functio selection
+        else if( option == 5)
+        {
+            printf("\n\nExit Procedure started..\n De-allocating the memory of LinkedList..\n ");
+
+            freeList(head);
+            printf("\nProcedure Completed.. \t Exiting from Program Safely ...\n\n");
+        }
+
+        else
+            printf("Error: Invalid Input..\n Please try again..\n");
     }
+
+    return EXIT_SUCCESS;
 }
 
-void displayList(node* head);
-bool append(node** headRef,int val);
-bool insertAtPosition(node** headRef,int val, int position);
-bool deleteAtPosition(node ** headRef,int position);
-void freeList(node* head);
+void displayList(node* head)
+{
+    node* newNode = head;
+    int cnt=0;
+    printf("\n---------------- Linked List Display Function -----------------\n");
+    while(newNode!= NULL)
+    {
+        printf("Node%d: %d\n",cnt,newNode->data);
+        newNode = newNode->next;
+        ++cnt;
+    }
+    printf("--------------------------------------------------------------\n");
+}
+
+
+bool append(node** headRef,int val)
+{
+
+}
+
+
+bool insertAtPosition(node** headRef,int val, int position)
+{
+
+}
+
+
+bool deleteAtPosition(node ** headRef,int position)
+{
+
+}
+
+
+void freeList(node* head)
+{
+
+}
