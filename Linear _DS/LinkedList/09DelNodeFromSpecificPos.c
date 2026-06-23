@@ -137,6 +137,12 @@ int main()
 
 void displayList(node* head)
 {
+    if(head == NULL)
+    {
+        printf("No elements in the list");
+        return;
+    }
+    
     node* newNode = head;
     int cnt=0;
     printf("\n---------------- Linked List Display Function -----------------\n");
