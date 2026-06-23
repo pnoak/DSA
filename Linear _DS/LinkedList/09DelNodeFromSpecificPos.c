@@ -142,7 +142,7 @@ void displayList(node* head)
         printf("No elements in the list");
         return;
     }
-    
+
     node* newNode = head;
     int cnt=0;
     printf("\n---------------- Linked List Display Function -----------------\n");
@@ -176,5 +176,14 @@ bool deleteAtPosition(node ** headRef,int position)
 
 void freeList(node* head)
 {
-
+    node* new=head;
+    node* next = NULL;
+    printf("\nDe-Allocation of memory started..\n");
+    while(new != NULL)
+    {
+        next = new->next;
+        free(new);
+        new = next;
+        printf(".\n");
+    }
 }
