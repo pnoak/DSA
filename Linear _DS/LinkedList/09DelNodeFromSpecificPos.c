@@ -178,7 +178,7 @@ void freeList(node* head)
 {
     node* new=head;
     node* next = NULL;
-    printf("\nDe-Allocation of memory started..\n");
+    printf("\nDe-Allocation of heap memory started..\n");
     while(new != NULL)
     {
         next = new->next;
