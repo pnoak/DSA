@@ -126,6 +126,7 @@ int main()
 
             freeList(head);
             printf("\nProcedure Completed.. \t Exiting from Program Safely ...\n\n");
+            break;
         }
 
         else
