@@ -265,7 +265,7 @@ bool deleteAtPosition(node ** headRef,int position)
     {
         current = current -> next;
     }
-    for (int i=0; (temp != NULL) && (i <= position); ++i);
+    for (int i=0; (temp != NULL) && (i <= position); ++i)
     {
         temp = temp->next;
     }
