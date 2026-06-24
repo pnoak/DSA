@@ -89,7 +89,7 @@ int main()
                 printf("\nNode added sucess..\n");
             }
             else{
-                printf("\nNode allocation failed..\n");
+                printf("\nWrong neagtive Position Entered..\n");
             }
         }
 
@@ -188,7 +188,46 @@ bool append(node** headRef,int val)
 
 bool insertAtPosition(node** headRef,int val, int position)
 {
+    if(position<0)
+    {
+        return false;
+    }
     
+    node* newNode = (node*)malloc(sizeof(node));
+    if(newNode == NULL)
+    {
+        fprintf(stderr,"Error: Memory allocation to node failed..\n");
+        return false;
+    }
+
+    //Assign value in the node data member
+    newNode->data = val;
+    newNode -> next = NULL;
+
+    // scenario 1: if the list is empty
+    if(*headRef == NULL)
+    {
+        *headRef = newNode;
+        return true;
+    }
+
+    //Scenario 2: Non-empty List with position = 0
+    else if(position == 0)
+    {
+        newNode->next = *headRef;
+        *headRef = newNode;
+        return true;
+    }
+
+    //Scenario 3: Non-empty List with Position != 0
+    else
+    {
+        node* current = *headRef;
+        for (int i=0; current != NULL && i < (position-1);++i)
+        {
+            
+        }
+    }
 }
 
 
