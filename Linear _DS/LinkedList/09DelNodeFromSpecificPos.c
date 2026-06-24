@@ -274,6 +274,7 @@ bool deleteAtPosition(node ** headRef,int position)
     if(temp->next == NULL)
     {
         current->next = NULL;
+        free(temp);
         return true;
     }
     else{
