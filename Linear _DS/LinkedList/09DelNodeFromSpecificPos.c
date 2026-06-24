@@ -243,15 +243,31 @@ bool insertAtPosition(node** headRef,int val, int position)
 
 bool deleteAtPosition(node ** headRef,int position)
 {
-    node* current = *headRef;
-    node* next = *headRef;
-    for(int i=0;current !=NULL && i<(position-1);++i)
+    //Scenario 1: List is Empty 
+    if(headRef == NULL || *headRef == NULL || position<0)
     {
-        current = current->next;
+        return false;
     }
-    for(int i=0;next!=NULL && i<(position +1);++i)
+
+    node* temp = *headRef;
+
+    //Scenario 2: Deletion of Head Node
+    if(position == 0)
     {
-        next = next->next;
+        *headRef = temp->next;
+        free(temp);
+        return true;
+    }
+
+    //Scenario 3: Middle or tail Node 
+    node* current = *headRef;
+    for(int i=0; (current != NULL) && (i<position);++i)
+    {
+        current = current -> next;
+    }
+    for (int i=0; (temp != NULL) && (i <= position); ++i);
+    {
+        temp = temp->next;
     }
 
 }
