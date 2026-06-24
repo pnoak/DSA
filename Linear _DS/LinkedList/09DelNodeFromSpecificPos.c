@@ -270,23 +270,25 @@ bool deleteAtPosition(node ** headRef,int position)
         temp = temp->next;
     }
 
-    //Check for Bound Contditions
-    if (temp == NULL) {
-    printf("Error: Position out of bounds.\n");
-    return false;
-}
+    // Check for Bound Contditions
+    if (temp == NULL)
+    {
+        printf("Error: Position out of bounds.\n");
+        return false;
+    }
 
-    //Scenario 4: removal of tail node
-    if(temp->next == NULL)
+    // Scenario 4: removal of tail node
+    if (temp->next == NULL)
     {
         current->next = NULL;
         free(temp);
         return true;
     }
-    else{
-    current ->next = temp->next;
-    free(temp);
-    return true;
+    else
+    {
+        current->next = temp->next;
+        free(temp);
+        return true;
     }
 }
 
