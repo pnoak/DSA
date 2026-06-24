@@ -262,7 +262,7 @@ bool deleteAtPosition(node ** headRef,int position)
     }
 
     //Scenario 3: Middle or tail Node 
-    node* current = *headRef;
+    node* current = *headR;
     for (int i = 0; current != NULL && i < (position - 1); ++i) {
         current = current->next;
     }
