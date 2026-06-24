@@ -158,7 +158,25 @@ void displayList(node* head)
 
 bool append(node** headRef,int val)
 {
+    node* newNode = (node*)malloc(sizeof(node));
+    if(newNode == NULL)
+    {
+        fprintf(stderr,"Error: Memory allocation Failed..");
+        return false;
+    }
 
+    newNode->data = val;
+    newNode->next = NULL;
+
+    if(*headRef == NULL)
+    {
+        *headRef = newNode;
+    }
+    else
+    {
+        node* current = *headRef;
+        while()
+    }
 }
 
 
