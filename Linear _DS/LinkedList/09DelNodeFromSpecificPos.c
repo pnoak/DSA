@@ -273,7 +273,7 @@ bool deleteAtPosition(node ** headRef,int position)
     //Scenario 4: removal of tail node
     if(temp->next == NULL)
     {
-        current->next == NULL;
+        current->next = NULL;
         return true;
     }
     else{
