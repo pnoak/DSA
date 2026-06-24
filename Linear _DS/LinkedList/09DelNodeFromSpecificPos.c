@@ -175,14 +175,20 @@ bool append(node** headRef,int val)
     else
     {
         node* current = *headRef;
-        while()
+        while(current->next != NULL)
+        {
+            current = current->next;
+        }
+
+        current ->next = newNode;
     }
+    return true;
 }
 
 
 bool insertAtPosition(node** headRef,int val, int position)
 {
-
+    
 }
 
 
