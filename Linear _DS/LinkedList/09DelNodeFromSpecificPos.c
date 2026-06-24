@@ -243,6 +243,16 @@ bool insertAtPosition(node** headRef,int val, int position)
 
 bool deleteAtPosition(node ** headRef,int position)
 {
+    node* current = *headRef;
+    node* next = *headRef;
+    for(int i=0;current !=NULL && i<(position-1);++i)
+    {
+        current = current->next;
+    }
+    for(int i=0;next!=NULL && i<(position +1);++i)
+    {
+        next = next->next;
+    }
 
 }
 
