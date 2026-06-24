@@ -225,9 +225,19 @@ bool insertAtPosition(node** headRef,int val, int position)
         node* current = *headRef;
         for (int i=0; current != NULL && i < (position-1);++i)
         {
-            
+            current = current -> next;
         }
+        //Check for Valid Position
+        if(current == NULL)
+        {
+            printf("\nError: Position Out of Reach.\n");
+            return false;
+        }
+        newNode->next = current->next;
+        current ->next = newNode;
     }
+
+    return true;
 }
 
 
