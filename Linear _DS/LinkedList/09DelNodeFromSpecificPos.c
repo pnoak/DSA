@@ -263,35 +263,22 @@ bool deleteAtPosition(node ** headRef,int position)
 
     //Scenario 3: Middle or tail Node 
     node* current = *headRef;
-    for(int i=0; (current != NULL) && (i<position-1);++i)
-    {
-        current = current -> next;
-    }
-    for (int i=0; (temp != NULL) && (i < position); ++i)
-    {
-        temp = temp->next;
+    for (int i = 0; current != NULL && i < (position - 1); ++i) {
+        current = current->next;
     }
 
-    // Check for Bound Contditions
-    if (temp == NULL)
+    if (current == NULL || current->next == NULL) 
     {
-        printf("Error: Position out of bounds.\n");
+        printf("\nError: Position Out of Bounds.\n");
         return false;
     }
 
-    // Scenario 4: removal of tail node
-    if (temp->next == NULL)
-    {
-        current->next = NULL;
-        free(temp);
-        return true;
-    }
-    else
-    {
-        current->next = temp->next;
-        free(temp);
-        return true;
-    }
+    // Set target node pointer referencing the deletion element
+    node* target = current->next;
+    current->next = target->next; 
+    free(target);
+    return true;
+
 }
 
 
