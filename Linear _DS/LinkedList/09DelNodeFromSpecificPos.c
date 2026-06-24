@@ -131,6 +131,7 @@ int main()
 
         else
             printf("Error: Invalid Input..\n Please try again..\n");
+            while (getchar() != '\n');
     }
 
     return EXIT_SUCCESS;
