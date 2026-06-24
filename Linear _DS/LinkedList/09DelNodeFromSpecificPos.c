@@ -269,7 +269,16 @@ bool deleteAtPosition(node ** headRef,int position)
     {
         temp = temp->next;
     }
-
+    if(temp->next == NULL)
+    {
+        current->next == NULL;
+        return true;
+    }
+    else{
+    current ->next = temp->next;
+    free(temp);
+    return true;
+    }
 }
 
 
