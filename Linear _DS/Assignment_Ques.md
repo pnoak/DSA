@@ -96,7 +96,7 @@ true on successful deletion and false if the position is out of bounds or the li
    3. **Scan Validation:** Prompt the user for the target index to delete and protect
      the entry using your standard scanf verification logic.
 
-### Assignment 10: Manual DLL Assembly
+## Assignment 10: Manual DLL Assembly
 ****Your Objectives:****
 1. **Define the Structure:** Create the typedef struct Node containing a prev pointer, data integer, and next pointer.
 
