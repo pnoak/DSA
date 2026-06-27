@@ -95,3 +95,25 @@ true on successful deletion and false if the position is out of bounds or the li
 
    3. **Scan Validation:** Prompt the user for the target index to delete and protect
      the entry using your standard scanf verification logic.
+
+### Assignment 10: Manual DLL Assembly
+****Your Objectives:****
+1. **Define the Structure:** Create the typedef struct Node containing a prev pointer, data integer, and next pointer.
+
+2. **Allocate 3 Nodes:** Create three local node pointers in main() (node1, node2, node3) and allocate their memory blocks individually using malloc(). Confirm they aren't NULL.
+
+3. **Initialize the Data:** Load your payload values (e.g., 10, 20, 30) into each node's data field.
+
+4. **Wire the Bi-directional Links explicitly:**
+
+   1. Wire node1 forward to node2, and make its prev point to NULL.
+
+   2. Wire node2 backward to node1 and forward to node3.
+
+   3. Wire node3 backward to node2 and forward to NULL.
+
+   4. Verify both Directions: * Print forward through the chain starting only from node1 (using node1->next->next->data).
+
+   5. Print backward through the chain starting only from node3 (using node3->prev->prev->data).
+
+5. Clean Up safely: free() all three nodes and defuse their pointers to NULL.
