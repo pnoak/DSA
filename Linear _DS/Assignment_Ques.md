@@ -106,7 +106,7 @@ true on successful deletion and false if the position is out of bounds or the li
 
 4. **Wire the Bi-directional Links explicitly:**
 
-   ** 1.** Wire node1 forward to node2, and make its prev point to NULL.
+   1. Wire node1 forward to node2, and make its prev point to NULL.
 
    2. Wire node2 backward to node1 and forward to node3.
 
