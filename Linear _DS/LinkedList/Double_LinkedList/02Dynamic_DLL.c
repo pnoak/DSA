@@ -32,7 +32,7 @@ typedef struct doublenode
 bool dll_append(DynaDLL** headref,int val);
 void display_forward(DynaDLL* head);
 void display_backward(DynaDLL* head);
-bool freeDll(DynaDLL* head);
+void freeDll(DynaDLL* head);
 
 int main()
 {
@@ -42,26 +42,38 @@ int main()
 
     int option=0;
     int value=0;
-    DynaDLL* head=NULL;
+    DynaDLL* head = NULL;
+    
 
     while (true)
     {
-        printf("Options to select Functionality:\n1)Append the Data\n2)Display Forward List\n3)Display Backward List\n4)Exit\nSelct option: ");
-        scanf("%d",&option);
+        printf("\nOptions to select Functionality:\n1)Append the Data\n2)Display Forward List\n3)Display Backward List\n4)Exit\nSelct option: ");
+        if(scanf("%d",&option)!=1)
+        {   
+            fprintf(stderr,"Error:Inavlid User Input\n");
+            return EXIT_FAILURE;
+        }
 
         if(option == 1 )
         {
             printf("Enter Value to append: ");
-            scanf("%d",&value);
+            if(scanf("%d",&value)!=1)
+            {
+                fprintf(stderr, "Error:Inavlid User Input\n");
+                printf("Freeing the memory\n");
+                freeDll(head);
+                return EXIT_FAILURE;
+            }
 
-            if(append(&head,value))
+
+            if(dll_append(&head,value))
             {
                 printf("\n Append Sucessful\n");
             }
             else
                 printf("Append Failed..");
         }
-        else if(option = 2 )
+        else if(option == 2 )
         {
             display_forward(head);
         }
@@ -71,9 +83,109 @@ int main()
         }
         else if(option == 4)
         {
-            printf("");
+            printf("Exit Sequence initialised..\n");
+            freeDll(head);
+            printf("Sequence Complete .. Exiting from Program ");
+            break;
+        }
+        else{
+            printf("Invalid Input..\n Please try again..\n");
         }
     }
 
     return EXIT_SUCCESS;
+}
+
+
+bool dll_append(DynaDLL** headref,int val)
+{
+    DynaDLL* newNode = NULL;
+
+    newNode = (DynaDLL*)malloc(sizeof(DynaDLL));
+    if(newNode == NULL)
+    {
+        fprintf(stderr,"Error: Memory Allocatio Failed..");
+        return false;
+    }
+
+    newNode->data = val;
+    newNode->next = NULL;
+    
+    DynaDLL* current = *headref;
+    if(current == NULL)
+    {
+        newNode->prev = NULL;
+        *headref = newNode;
+        return true;
+    }
+    else
+    {
+        while(current->next != NULL)
+        {
+            current = current->next;
+        }
+        newNode->prev = current;
+        current->next = newNode;
+        return true;
+    }
+}
+
+
+void display_forward(DynaDLL* head)
+{
+    printf("===========================================================================\n");
+    printf("\tDyanmic Linked List Forward Display Function \n");
+    printf("===========================================================================\n");
+
+    DynaDLL* current = head;
+    int cnt = 0;
+
+    while(current != NULL)
+    {
+        printf("Node %d : %d\n",cnt,current->data);
+        ++cnt;
+        current = current->next;
+    }
+
+    printf("===========================================================================\n");
+}
+
+
+void display_backward(DynaDLL* head)
+{
+    printf("===========================================================================\n");
+    printf("\tDyanmic Linked List Backward Display Function \n");
+    printf("===========================================================================\n");
+
+    DynaDLL* current = head;
+    int cnt = 0;
+
+    while(current->next != NULL)
+    {
+        current = current->next;
+    }
+
+    while(current != NULL)
+    {
+        printf("Reverse Node %d : %d \n",cnt,current->data);
+        ++cnt;
+        current = current->prev;
+    }
+
+    printf("===========================================================================\n");
+}
+
+
+void freeDll(DynaDLL* head)
+{
+    DynaDLL* next=NULL;
+    DynaDLL* current= head;
+
+    while(current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+        printf(".\n");
+    }
 }
