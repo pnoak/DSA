@@ -96,5 +96,13 @@ int main()
     }
     printf("=============================================================================\n\n");
 
+    free(node1);
+    free(node2);
+    free(node3);
+
+    node1 = NULL;
+    node2 = NULL;
+    node3 = NULL;
+
     return EXIT_SUCCESS;
 }
