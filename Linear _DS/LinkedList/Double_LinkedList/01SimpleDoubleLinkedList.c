@@ -57,28 +57,44 @@ int main()
     node1->next = NULL;
 
     // Node 2
-    node2->prev = &node1;
+    node2->prev = node1;
     node2->data = 20;
     node2->next = NULL;
-    node1 -> next = &node2;
+    node1 -> next = node2;
 
     // Node 3 
-    node3 ->prev = &node2;
+    node3 ->prev = node2;
     node3->data = 30;
     node3->next = NULL;
-    node2->next = &node3;
+    node2->next = node3;
 
     DLLnode * fHead = node1;
     DLLnode* rHead = node3;
 
 
     // Traversing the List 
+    printf("\n=============================================================================\n");
+    printf("Forward Display of LinkedList Display\n");
+    printf("=============================================================================\n");
+    DLLnode* counter = fHead;
     for(int i=0;i<3;++i)
     {
-        
+        printf("Node %d = %d\n",i,counter->data);
+        counter = counter->next;
     }
+    printf("=============================================================================\n\n");
 
-
+    printf("\n=============================================================================\n");
+    printf("Reverse Display of LinkedList Display\n");
+    printf("=============================================================================\n");
+    
+    counter = rHead;
+    for(int i=0;i<3;++i)
+    {
+        printf("Node %d = %d\n",i,counter->data);
+        counter = counter->prev;
+    }
+    printf("=============================================================================\n\n");
 
     return EXIT_SUCCESS;
 }
