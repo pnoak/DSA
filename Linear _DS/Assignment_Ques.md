@@ -117,3 +117,21 @@ true on successful deletion and false if the position is out of bounds or the li
    5. Print backward through the chain starting only from node3 (using node3->prev->prev->data).
 
 5. **Clean Up safely:** free() all three nodes and defuse their pointers to NULL.
+
+## Assignment 11: The Dynamic DLL Container Module
+**Your Task:** Write a modular, interactive menu program that implements a custom dynamic integer Doubly Linked List.
+
+**Requirements:**
+1. **Define the Node Layout:** Use your established typedef struct doubleNode pattern.
+
+2. **Implement Append:** Write bool dll_append(DLLNode headRef, int value);.
+
+3. **Implement Dual Traversals:**
+
+   1. void display_forward(DLLNode* head); -> Loops forward from head to tail using next.
+
+   2. void display_reverse(DLLNode* head); -> Loops forward to find the tail first, then loops completely backward to the head using the prev pointers to print values.
+
+4. **Implement Clean Freeing:** Write void free_dll(DLLNode headRef); that wipes all nodes safely and nullifies the main reference.
+
+5. **Interactive Controller:** Build a while(true) terminal loop tracking options: 1) Append, 2) Display Forward, 3) Display Reverse, and 4) Exit. Validate user entry with scanf.
