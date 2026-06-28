@@ -133,6 +133,11 @@ bool dll_append(DynaDLL** headref,int val)
 
 void display_forward(DynaDLL* head)
 {
+    if(head == NULL)
+    {
+        fprintf(stderr,"Error: List is not Initialised..\n please try again by appending at least One Node..\n");
+        return;
+    }
     printf("===========================================================================\n");
     printf("\tDyanmic Linked List Forward Display Function \n");
     printf("===========================================================================\n");
@@ -153,6 +158,11 @@ void display_forward(DynaDLL* head)
 
 void display_backward(DynaDLL* head)
 {
+    if(head == NULL)
+    {
+        fprintf(stderr,"Error: List is not Initialised..\n please try again by appending at least One Node..\n");
+        return;
+    }
     printf("===========================================================================\n");
     printf("\tDyanmic Linked List Backward Display Function \n");
     printf("===========================================================================\n");
