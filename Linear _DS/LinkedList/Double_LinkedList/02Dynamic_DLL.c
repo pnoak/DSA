@@ -90,6 +90,7 @@ int main()
         }
         else{
             printf("Invalid Input..\n Please try again..\n");
+            while (getchar() != '\n'); //Flush the scanf
         }
     }
 
