@@ -148,10 +148,10 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
 
 3. **Unlink the Backward Connection:** Route Node A forward past Node B to point at Node C:
 
-```B->prev->next = B->next; // A's next pointer now bypasses B and points to C```
+      ```B->prev->next = B->next; // A's next pointer now bypasses B and points to C```
 
 4. **Unlink the Forward Connection:** If Node C exists (i.e., Node B is not the tail), route Node C's backward link past Node B to point directly at Node A:
 
-```B->next->prev = B->prev; // C's prev pointer now bypasses B and points to A```
+      ```B->next->prev = B->prev; // C's prev pointer now bypasses B and points to A```
 
 5. **Reclaim Memory:** Safe to execute free(B).
