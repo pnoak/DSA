@@ -121,7 +121,10 @@ int main()
             break;
         }
         else
-        printf("Invalid Option Selected. Please select a valid option from the list\n");
+        {
+            printf("Invalid Option Selected. Please select a valid option from the list\n");
+            while(getchar() != '\n');
+        }
     }
     return EXIT_SUCCESS;
 }
@@ -177,7 +180,7 @@ bool DLLDelete(node** headref, int pos)
     else if(pos == 0)
     {
         *headref = current->next;
-        (*headref)->prev = NULL;
+        current->next->prev = NULL;
         free(current);
         printf("\n-------------------------------\n"); 
         return true;
@@ -205,6 +208,12 @@ bool DLLDelete(node** headref, int pos)
             free(current);
             printf("\n-------------------------------\n"); 
             return true;
+        }
+        else if(current == NULL)
+        {
+            printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
+            printf("\n-------------------------------\n"); 
+            return false;
         }
     }
     else
@@ -288,5 +297,6 @@ void freeList(node* head)
     printf("-------------------------------\n");
     printf("All nodes freed.\n");
     printf("-------------------------------\n");
+    return;
 }
 
