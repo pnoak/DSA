@@ -155,3 +155,14 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
       ```B->next->prev = B->prev; // C's prev pointer now bypasses B and points to A```
 
 5. **Reclaim Memory:** Safe to execute free(B).
+
+## Assignment 13: The Complete DLL Insertion Module
+
+1. **Your Task:** Incorporate a robust arbitrary positioning function into your Doubly Linked List code base.
+
+2. **Requirements:**
+3. **Implement the Function:** Write bool DLLInsert(node headref, int val, int pos);. It should return true on success and false if the position is out of bounds or negative.
+
+4. **Interactive Menu Expansion:** Add a new option to your main console loop: 2) Insert Node at specified position. (Shift your subsequent display, delete, and exit menu option numbers downward accordingly).
+
+5. **Input Validation:** Prompt the user for both the integer value and target position, protecting inputs with your standard scanf error traps
