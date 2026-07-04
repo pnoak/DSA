@@ -18,9 +18,9 @@ Input Validation: Prompt the user for both the integer value and target position
 
 typedef struct doublenode
 {
-    struct node* prev;
+    struct doublenode* prev;
     int data;
-    struct node* next;
+    struct doublenode* next;
 }node;
 
 bool dllAppend(node** headref, int val);
@@ -194,6 +194,7 @@ bool dllAppend(node** headref, int val)
 
 bool dllInsert(node** headref, int pos, int val)
 {
+    int cnt=0;
     node* current = *headref;
     node* newNode = (node*)malloc(sizeof(node));
     if(newNode == NULL)
@@ -202,10 +203,63 @@ bool dllInsert(node** headref, int pos, int val)
         freeList(*headref);
         return false;
     }
-    
+
+    newNode->data = val;
+
+    if(pos<0)
+    {
+        fprintf(stderr,"Error: Invalid position..\n");
+        free(newNode);
+        return false;    
+    }
+    else if(pos==0)
+    {
+        newNode->prev = NULL;
+        newNode->next = current;
+        current->prev = newNode;
+        *headref = newNode;
+        return true;
+    }
+    else if(pos>0)
+    {
+        while ((cnt < pos) && (current != NULL))
+        {
+            current = current->next;
+            ++cnt;
+        }
+
+        // position out of bounds
+        if(current == NULL)
+        {
+            printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
+            printf("\n-------------------------------\n"); 
+            free(newNode);
+            return false;
+        }
+        
+        // tail insertion
+        else if((current != NULL) && (current->next == NULL) && (cnt == pos))
+        {
+            current ->next = newNode;
+            newNode->prev = current;
+            newNode->next = NULL;
+            return true;
+        }
+
+        // middle insertion 
+        else if((current != NULL) && (cnt < pos))
+        {
+            node* temp = current->prev;
+            newNode->next = current;
+            newNode->prev = current->prev;
+            temp->next= newNode;
+            current->prev = newNode;
+            return true;
+        }
+    }
 }
 
-void displayForward( node* head)
+void displayForward(node* head)
 {
     printf("-------------------------------\n");
     printf("Displaying list form Front..\n");
@@ -247,7 +301,66 @@ void displayBackward(node* head)
 
 bool deleteDLL(node** headref, int pos)
 {
+    node* current = *headref;
+    if(current == NULL)
+    {
+        printf("\n-------------------------------\n");  
+        printf("List is Empty.. please append some data first and try again..\n");
+        printf("\n-------------------------------\n"); 
+        return false;
+    }
+    else if(pos < 0)
+    {
+        printf("\n-------------------------------\n");
+        printf("Negative position not allowed.. please try again with a valid position..\n");
+        printf("\n-------------------------------\n"); 
+        return false;
+    }
+    else if(pos == 0)
+    {
+        *headref = current->next;
+        current->next->prev = NULL;
+        free(current);
+        printf("\n-------------------------------\n"); 
+        return true;
+    }
+    else if( pos>0)
+    {
+        int cnt = 0;
+        while(current != NULL && cnt < pos)
+        {
+            current = current->next;
+            ++cnt;
+        }
 
+        if ((current != NULL) && (current ->prev != NULL) && (current->next != NULL))
+        {
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
+            free(current);
+            printf("\n-------------------------------\n"); 
+            return true;
+        }
+        else if((current != NULL) && (current->prev != NULL) && (current->next == NULL))
+        {
+            current->prev->next = NULL;
+            free(current);
+            printf("\n-------------------------------\n"); 
+            return true;
+        }
+        else if(current == NULL)
+        {
+            printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
+            printf("\n-------------------------------\n"); 
+            return false;
+        }
+    }
+    else
+    {
+        printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
+        printf("\n-------------------------------\n"); 
+        return false;
+    }
 }
 
 void freeList(node* head)
