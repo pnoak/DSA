@@ -157,6 +157,7 @@ int main()
         {
             printf("Invalid Option Selected. Please select a valid option from the list\n");
             while(getchar() != '\n');
+            continue;
         }
     }
 }
@@ -194,69 +195,77 @@ bool dllAppend(node** headref, int val)
 
 bool dllInsert(node** headref, int pos, int val)
 {
-    int cnt=0;
     node* current = *headref;
-    node* newNode = (node*)malloc(sizeof(node));
-    if(newNode == NULL)
+    node* previous = NULL;
+
+    node *newNode = (node *)malloc(sizeof(node));
+    if (newNode == NULL)
     {
-        fprintf(stderr,"Error: Memory allocation failed..\n");
-        freeList(*headref);
+        fprintf(stderr, "Error: Memory allocation failed..\n");
         return false;
     }
 
     newNode->data = val;
+    newNode->next = NULL;
+    newNode->prev = NULL;
 
-    if(pos<0)
+    if (pos < 0)
     {
-        fprintf(stderr,"Error: Invalid position..\n");
+        fprintf(stderr, "Error: Invalid position..\n");
         free(newNode);
-        return false;    
+        return false;
     }
-    else if(pos==0)
+
+    if (*headref == NULL)
     {
-        newNode->prev = NULL;
-        newNode->next = current;
-        current->prev = newNode;
+        if (pos == 0)
+        {
+            *headref = newNode;
+            return true;
+        }
+
+        printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
+        printf("\n-------------------------------\n");
+        free(newNode);
+        return false;
+    }
+
+    int cnt = 0;
+    while (current != NULL && cnt < pos)
+    {
+        previous = current;
+        current = current->next;
+        ++cnt;
+    }
+
+    if (current == NULL && cnt < pos)
+    {
+        printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
+        printf("\n-------------------------------\n");
+        free(newNode);
+        return false;
+    }
+
+    if (previous == NULL)
+    {
+        newNode->next = *headref;
+        (*headref)->prev = newNode;
         *headref = newNode;
         return true;
     }
-    else if(pos>0)
+
+    if (current == NULL)
     {
-        while ((cnt < pos) && (current != NULL))
-        {
-            current = current->next;
-            ++cnt;
-        }
-
-        // position out of bounds
-        if(current == NULL)
-        {
-            printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
-            printf("\n-------------------------------\n"); 
-            free(newNode);
-            return false;
-        }
-        
-        // tail insertion
-        else if((current != NULL) && (current->next == NULL) && (cnt == pos))
-        {
-            current ->next = newNode;
-            newNode->prev = current;
-            newNode->next = NULL;
-            return true;
-        }
-
-        // middle insertion 
-        else if((current != NULL) && (cnt < pos))
-        {
-            node* temp = current->prev;
-            newNode->next = current;
-            newNode->prev = current->prev;
-            temp->next= newNode;
-            current->prev = newNode;
-            return true;
-        }
+        previous->next = newNode;
+        newNode->prev = previous;
+        return true;
     }
+
+    newNode->prev = previous;
+    newNode->next = current;
+    previous->next = newNode;
+    current->prev = newNode;
+    return true;
 }
 
 void displayForward(node* head)
@@ -267,6 +276,7 @@ void displayForward(node* head)
 
     node* current = head;
     int cnt=0;
+    
     while(current != NULL)
     {
         printf("Node %d: %d\n",cnt,current->data);
@@ -284,7 +294,14 @@ void displayBackward(node* head)
 
     node* current = head;
     int cnt=0;
-    
+
+    if(current == NULL)
+    {
+        printf("List is Empty.. please append some data first and try again..\n");
+        printf("\n-------------------------------\n"); 
+        return;
+    }
+
     while(current->next != NULL)
     {
         current = current->next;
@@ -302,64 +319,58 @@ void displayBackward(node* head)
 bool deleteDLL(node** headref, int pos)
 {
     node* current = *headref;
-    if(current == NULL)
+    if (current == NULL)
     {
-        printf("\n-------------------------------\n");  
+        printf("\n-------------------------------\n");
         printf("List is Empty.. please append some data first and try again..\n");
-        printf("\n-------------------------------\n"); 
+        printf("\n-------------------------------\n");
         return false;
     }
-    else if(pos < 0)
+    else if (pos < 0)
     {
         printf("\n-------------------------------\n");
         printf("Negative position not allowed.. please try again with a valid position..\n");
-        printf("\n-------------------------------\n"); 
+        printf("\n-------------------------------\n");
         return false;
     }
-    else if(pos == 0)
+    else if (pos == 0)
     {
         *headref = current->next;
-        current->next->prev = NULL;
+        if (*headref != NULL)
+        {
+            (*headref)->prev = NULL;
+        }
         free(current);
-        printf("\n-------------------------------\n"); 
+        printf("\n-------------------------------\n");
         return true;
     }
-    else if( pos>0)
+    else
     {
         int cnt = 0;
-        while(current != NULL && cnt < pos)
+        while (current != NULL && cnt < pos)
         {
             current = current->next;
             ++cnt;
         }
 
-        if ((current != NULL) && (current ->prev != NULL) && (current->next != NULL))
-        {
-            current->prev->next = current->next;
-            current->next->prev = current->prev;
-            free(current);
-            printf("\n-------------------------------\n"); 
-            return true;
-        }
-        else if((current != NULL) && (current->prev != NULL) && (current->next == NULL))
-        {
-            current->prev->next = NULL;
-            free(current);
-            printf("\n-------------------------------\n"); 
-            return true;
-        }
-        else if(current == NULL)
+        if (current == NULL)
         {
             printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
-            printf("\n-------------------------------\n"); 
+            printf("\n-------------------------------\n");
             return false;
         }
-    }
-    else
-    {
-        printf("Position %d does not exist in the list.. please try again with a valid position..\n", pos);
-        printf("\n-------------------------------\n"); 
-        return false;
+
+        if (current->prev != NULL)
+        {
+            current->prev->next = current->next;
+        }
+        if (current->next != NULL)
+        {
+            current->next->prev = current->prev;
+        }
+        free(current);
+        printf("\n-------------------------------\n");
+        return true;
     }
 }
 
