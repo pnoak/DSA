@@ -58,10 +58,8 @@ int main()
         if (scanf("%d", &opt) != 1)
         {
             fprintf(stderr, "Error:Invalid Input from user\nplease try again..\n");
-            while (getchar() != '\n')
-                ; // Flust the Bad Input
+            while (getchar() != '\n');       // Flust the Bad Input
             printf("------------------------------------------------------------------------------------\n");
-            continue;
         }
 
         // Append Functionality 
@@ -109,7 +107,7 @@ int main()
             printf("------------------------------------------------------------------------------------\n");
 
             int val,pos;
-            printf("Enter the position to inser data: ");
+            printf("Enter the position to insert data: ");
             if(scanf("%d",&pos)!= 1)
             {
                 fprintf(stderr,"Error:Invalid Input from user..\n");
@@ -186,7 +184,7 @@ int main()
 
         }
 
-        // Exit functionality 
+        // Free Heap memory Functionality 
         if(opt == 6)
         {
             printf("\n------------------------------------------------------------------------------------\n");
@@ -197,10 +195,218 @@ int main()
             printf("------------------------------------------------------------------------------------\n");
         }
 
+        // Exit functionality 
+        else if(opt == 7)
+        {
+            printf("\n------------------------------------------------------------------------------------\n");
+            printf("'EXIT' Functionality Selected..\n");
+            printf("------------------------------------------------------------------------------------\n");
+
+            printf("Procedure to free the memory started..\n");
+            freeListDLL(head);
+            printf("Procedure Complete..\n");
+            printf("------------------------------------------------------------------------------------\n");
+            return EXIT_SUCCESS;
+        }
+
         else{
             fprintf(stderr,"Error: Wrong Input.. Please try again ...\n");
             while(getchar()!='\n');
             continue;
         }
+    }
+}
+
+/// @brief Append the new node with data to the end of the list,if it is not initialised then add node to the first position(i.e.Index "0")
+///            and update double pointer to head reference pointing to the newly allocated node on heap  
+/// @param headref double pointer tho the head for storing the address of the first node.
+/// @param val integer value to store in the node
+/// @return returns boolian value
+bool appendDLL(node ** headref, int val)
+{
+    node * newNode = (node*)malloc(sizeof(node));
+    if(newNode == NULL)
+    {
+        fprintf(stderr,"Error:Memory Allocation failed.. please try again \n");
+        return false;
+    }
+
+    //Add user value to the Data member and attach the list to ground from both the side 
+    newNode->prev = NULL;
+    newNode->data = val;
+    newNode->next = NULL;
+
+    //Check for empty list 
+    if(*headref == NULL)
+    {
+        *headref = newNode;
+        return true;
+    }
+
+    // If list is not empty then go at end of list and append the node 
+    node* current = *headref;
+    while(current->next != NULL)
+    {
+        current = current->next;        // This will stop traversing on the end node
+    }
+    // wire the previous node with the new
+    newNode->prev = current;
+    newNode->next = NULL;
+    current->next = newNode;
+
+    return true;
+}
+
+/// @brief Insertion of the node in doubly Linked List at Specific position 
+/// @param headref Double pointer to the starting of the LLinked List
+/// @param val Integer Data to be stored on the node
+/// @param pos Index where to add the node 
+/// @return Returns Boolian value, for the failure of teh procedure false be the return value othervise true.
+bool insertAtPosition(node ** headref, int val, int pos)
+{
+    int cnt=0;
+    node* newNode = (node*)malloc(sizeof(node));
+    if (newNode == NULL)
+    {
+        fprintf(stderr,"Error:Memory allocation on Heap is failed ..please try again..\n");
+        return false;
+    }
+    newNode->data = val;
+    newNode->next= NULL;
+    newNode->prev = NULL;
+
+    if (*headref == NULL)
+    {
+        *headref = newNode;
+        return true;
+    }
+    else if (pos < 0)
+    {
+        printf("Please Enter a valid Index to append Node\n");
+        free(newNode);
+        return false;
+    }
+    else if(pos == 0)
+    {
+        node* current = *headref;
+        newNode ->next = current;
+        newNode->prev = NULL;
+        current->prev = newNode;
+        *headref = newNode;
+        return true;
+    }
+    else if(pos>0)
+    {
+        node*current = *headref;
+        while(current != NULL && cnt<(pos-1))
+        {
+            current=current->next;
+            ++cnt;
+        }
+        if(current==NULL && cnt<pos)
+        {
+            printf("Error:Index out of reach\nPlease try again with valis index...\n");
+            free(newNode);
+            return false;
+        }
+        else if(current !=NULL && (current->next== NULL))
+        {
+            current->next=newNode;
+            newNode->prev = current;
+            newNode->next = NULL;
+            return true;
+        }
+        else{
+            newNode->next = current->next;
+            current->next->prev = newNode;
+            newNode->prev= current;
+            current->next= newNode;
+            return true;
+        }
+    }
+}
+
+/// @brief Displaying the list from the front till end 
+/// @param head Pointer to the head of the Linked List
+void  displayForwardDLL(node* head)
+{
+    node* current = head;
+    if(current == NULL)
+    {
+        printf("Please append the node to the list, after that use this funtionality..\n");
+        return;
+    }
+    else{
+        int cnt=0;
+        while(current!=NULL)
+        {
+            printf("Node %d: %d\n",cnt,current->data);
+            current = current->next;
+            ++cnt;
+        }
+        printf("------------------------------------\n");
+        printf("Total Number Of nodes: %d\n",cnt);
+    }
+}
+
+/// @brief Displaying the list from the end till front
+/// @param head Pointer to the head of the Linked List
+void  displayBackwardDLL(node* head)
+{
+    node* current = head;
+    if(current == NULL)
+    {
+        printf("Please append the node to the list, after that use this funtionality..\n");
+        return;
+    }
+    else{
+        int cnt=0;
+        //Go to the end of the List 
+        while(current->next!= NULL)
+        {
+            current = current->next;
+            ++cnt;
+        }
+
+        while(current != NULL)
+        {
+            printf("Node %d: %d\n",cnt,current->data);
+            current= current->prev;
+            --cnt;
+        }
+    }
+}
+
+/// @brief 
+/// @param headref 
+/// @param pos 
+/// @return 
+bool deleteNodeDLL(node ** headref, int pos)
+{
+    return false;
+}
+
+/// @brief This function clears the whole list of nodes and releases the heap memory 
+/// @param head Pointer to the head of the Linked List
+void freeListDLL(node *head)
+{
+    if (head == NULL)
+    {
+        printf("No Need to free the List..\n");
+    }
+    else
+    {
+        node *current = head;
+        node *next = NULL;
+        int cnt = 0;
+        while (current != NULL)
+        {
+            next = current->next;
+            free(current);
+            printf("Node %d freed.\n", cnt);
+            cnt++;
+            current = next;
+        }
+        head = NULL;
     }
 }
