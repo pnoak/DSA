@@ -377,13 +377,18 @@ void  displayBackwardDLL(node* head)
     }
 }
 
-/// @brief 
-/// @param headref 
-/// @param pos 
-/// @return 
+/// @brief Function to Delete and free the memory of the node for particular position 
+/// @param headref Double pointer for the list trversal and head of the List 
+/// @param pos Interger value which defines the position of the node to delete data and free heap memory 
+/// @return    returns the boolian value 
 bool deleteNodeDLL(node ** headref, int pos)
 {
-    return false;
+    node* current = *headref;
+    if(current == NULL)
+    {
+        fprintf(stderr,"Error: List is nor initialized..\n please append the data and Enter valid Location to delete node..\n");
+        return false;
+    }
 }
 
 /// @brief This function clears the whole list of nodes and releases the heap memory 
