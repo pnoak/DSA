@@ -383,11 +383,56 @@ void  displayBackwardDLL(node* head)
 /// @return    returns the boolian value 
 bool deleteNodeDLL(node ** headref, int pos)
 {
+    int cnt=0;
     node* current = *headref;
     if(current == NULL)
     {
         fprintf(stderr,"Error: List is nor initialized..\n please append the data and Enter valid Location to delete node..\n");
         return false;
+    }
+    else{
+       if(pos<0)
+       {
+            printf("Please Enter valid Position..\n");
+            return false;
+       }
+       else if (pos == 0)
+       {
+           *headref = current->next;
+           if (*headref != NULL)
+           {
+
+               (*headref)->prev = NULL;
+           }
+           free(current);
+           return true;
+       }
+       else
+       {
+            while((current != NULL) && (cnt<pos))
+            {
+                current = current->next;
+                ++cnt;
+            }
+
+            if(current == NULL)
+            {   
+                printf("Out of Bound ...\nPlease enter valid position..\n");
+                return false;
+            }
+            else{
+                if(current->next != NULL)
+                {
+                    current->next->prev = current->prev;
+                }
+                if(current->prev != NULL)
+                {
+                    current->prev->next = current->next;
+                }
+                free(current);
+                return true;
+            }
+       }
     }
 }
 
