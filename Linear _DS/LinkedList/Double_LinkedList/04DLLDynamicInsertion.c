@@ -70,17 +70,6 @@ int main()
             printf("------------------------------------------------------------------------------------\n");
 
             int val;
-            node * newNode = (node*)malloc(sizeof(node));
-            if(newNode == NULL)
-            {
-                fprintf(stderr,"Error:Memory allocation failed..\n");
-                if(head != NULL)
-                {
-                    freeListDLL(&head);
-                }
-                else
-                    return EXIT_FAILURE;
-            }
             printf("Enter the value: ");
             if(scanf("%d",&val)!= 1)
             {
