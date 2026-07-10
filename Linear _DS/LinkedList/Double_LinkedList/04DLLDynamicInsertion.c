@@ -76,7 +76,7 @@ int main()
                 fprintf(stderr,"Error:Memory allocation failed..\n");
                 if(head != NULL)
                 {
-                    freeListDLL(head);
+                    freeListDLL(&head);
                 }
                 else
                     return EXIT_FAILURE;
@@ -191,7 +191,7 @@ int main()
             printf("'Free Entire List' Functionality Selected..\n");
             printf("------------------------------------------------------------------------------------\n");
 
-            freeListDLL(head);
+            freeListDLL(&head);
             printf("------------------------------------------------------------------------------------\n");
         }
 
@@ -203,7 +203,7 @@ int main()
             printf("------------------------------------------------------------------------------------\n");
 
             printf("Procedure to free the memory started..\n");
-            freeListDLL(head);
+            freeListDLL(&head);
             printf("Procedure Complete..\n");
             printf("------------------------------------------------------------------------------------\n");
             return EXIT_SUCCESS;
