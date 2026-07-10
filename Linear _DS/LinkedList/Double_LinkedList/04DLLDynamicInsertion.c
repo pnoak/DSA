@@ -32,7 +32,7 @@ bool insertAtPosition(node ** headref, int val, int pos);
 void  displayForwardDLL(node* head);
 void  displayBackwardDLL(node* head);
 bool deleteNodeDLL(node ** headref, int pos);
-void freeListDLL(node * head);
+void freeListDLL(node ** headref);
 
 
 /// @brief Main Function to drive the program
@@ -185,7 +185,7 @@ int main()
         }
 
         // Free Heap memory Functionality 
-        if(opt == 6)
+        else if(opt == 6)
         {
             printf("\n------------------------------------------------------------------------------------\n");
             printf("'Free Entire List' Functionality Selected..\n");
@@ -277,6 +277,11 @@ bool insertAtPosition(node ** headref, int val, int pos)
 
     if (*headref == NULL)
     {
+        if(pos!=0)
+        {
+            free(newNode);
+            return false;
+        }
         *headref = newNode;
         return true;
     }
@@ -324,6 +329,7 @@ bool insertAtPosition(node ** headref, int val, int pos)
             return true;
         }
     }
+    return false;
 }
 
 /// @brief Displaying the list from the front till end 
@@ -438,16 +444,16 @@ bool deleteNodeDLL(node ** headref, int pos)
 
 /// @brief This function clears the whole list of nodes and releases the heap memory 
 /// @param head Pointer to the head of the Linked List
-void freeListDLL(node *head)
+void freeListDLL(node** headref)
 {
-    if (head == NULL)
+    if (*headref == NULL)
     {
         printf("No Need to free the List..\n");
     }
     else
     {
-        node *current = head;
-        node *next = NULL;
+        node* current = *headref;
+        node* next = NULL;
         int cnt = 0;
         while (current != NULL)
         {
@@ -457,6 +463,6 @@ void freeListDLL(node *head)
             cnt++;
             current = next;
         }
-        head = NULL;
+        *headref = NULL;
     }
 }
