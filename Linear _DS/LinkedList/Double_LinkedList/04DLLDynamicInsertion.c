@@ -38,6 +38,7 @@ void freeListDLL(node ** headref);
 /// @brief Main Function to drive the program
 int main()
 {
+    system("cls");      // Clears the screen for fresh start of program 
     node *head = NULL;
     int opt;
     printf("\n=================================================================================================================\n");
@@ -264,7 +265,13 @@ bool insertAtPosition(node ** headref, int val, int pos)
     newNode->next= NULL;
     newNode->prev = NULL;
 
-    if (*headref == NULL)
+    if (pos < 0)
+    {
+        printf("Please Enter a valid Index to append Node\n");
+        free(newNode);
+        return false;
+    }
+    else if (*headref == NULL)
     {
         if(pos!=0)
         {
@@ -273,12 +280,6 @@ bool insertAtPosition(node ** headref, int val, int pos)
         }
         *headref = newNode;
         return true;
-    }
-    else if (pos < 0)
-    {
-        printf("Please Enter a valid Index to append Node\n");
-        free(newNode);
-        return false;
     }
     else if(pos == 0)
     {
