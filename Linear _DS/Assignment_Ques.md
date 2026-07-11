@@ -182,5 +182,5 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
    1. Wire node1->next = node2;
    2. Wire node2->next = node3;
    3. The Circular Connection: Wire node3->next = node1; (The loop boundary wrapper).
-4. **Print exactly once:**Write a safe do-while loop pattern that checks when current == node1 on its second pass to stop printing before hitting an infinite loop.
+4. **Print exactly once:** Write a safe do-while loop pattern that checks when current == node1 on its second pass to stop printing before hitting an infinite loop.
 5. **Break Circle Before Deallocation:** Set node3->next = NULL; explicitly right before you call your free() functions to protect the stack from trace collapse corruption errors.
