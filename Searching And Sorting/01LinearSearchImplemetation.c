@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<windows.h>
 
 bool LinearSearch(const int [],int, int*);
 bool RandomArrayGeneration(int*);
@@ -57,13 +58,37 @@ void displayArray(int* arr)
 
 bool LinearSearch(const int arr[],int searchNum, int* FoundIndex)
 {
+    LARGE_INTEGER frequency, start, end;
+    long long elapsedTime;
+
+    // Get Clock Frequency
+    QueryPerformanceFrequency(&frequency);
+    // Start the timer Counting
+    QueryPerformanceCounter(&start);
+
     for(int i=0;i<10;i++)
     {
-        if(arr[i] == searchNum)
+        if (arr[i] == searchNum)
         {
             *FoundIndex = i;
+
+            // Stop Timer Counting
+            QueryPerformanceCounter(&end);
+
+            // Calculate time in Nanoseconds
+            elapsedTime = (end.QuadPart - start.QuadPart) * 1000000000 / frequency.QuadPart;
+
+            printf("Time taken for Linear Search: %lld Nanoseconds\n", elapsedTime);
             return true;
         }
     }
+
+    // Stop Timer Counting
+    QueryPerformanceCounter(&end);
+    
+    // Calculate time in Microseconds 
+    elapsedTime = (end.QuadPart - start.QuadPart) * 1000000 / frequency.QuadPart;
+
+    printf("Time taken for Linear Search: %lld Nanoseconds\n", elapsedTime);
     return false;
 }
