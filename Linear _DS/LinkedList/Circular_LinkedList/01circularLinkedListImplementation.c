@@ -112,15 +112,22 @@ void freeList(node* head)
 
     node* current = head;
     node*temp = NULL;
-    int cnt=0;
-    do
+    
+    // Locate the tail and break the circular list 
+    node* tail = head;
+    while(tail->next!= head)
     {
-        temp = current->next;
+        tail = tail->next;
+    }
+    tail->next = NULL; // Break the circular link to avoid infinite loop during free
+
+    // Freeing memory like a standard list
+    while(current != NULL)
+    {
+        temp = current ->next;
         free(current);
         current = temp;
-        printf("Node %d frees..\n",cnt);
-        cnt++;
-    } while (current != head);
+    }
 
     printf("All nodes freed..\n");
 }

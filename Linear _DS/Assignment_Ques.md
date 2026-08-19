@@ -1,6 +1,7 @@
-## Assignment 1: The Dynamic Integer Array (Warm-up)Objective:
+## Assignment 1: The Dynamic Integer Array (Warm-up)
+Objective:
  Handle basic dynamic allocation, resizing, and memory cleanup.Task: Write a program that prompts the user to enter N integers. Allocate memory dynamically for these N integers.Twist: After reading the initial N integers, ask the user for M additional integers. Resize the allocated memory block to hold N + M elements without losing the original data. Print the entire final array, and then free all allocated memory.
-
+---
 
 ## Assignment 2: The String Concatenation Engine (Intermediate)
 Objective: Avoid buffer overflows by calculating memory requirements dynamically at runtime.
@@ -8,7 +9,7 @@ Objective: Avoid buffer overflows by calculating memory requirements dynamically
 Task: Create a function with the signature char* dynamic_concat(const char* str1, const char* str2).
 
 Twist: Inside the function, calculate the exact length of both strings, allocate a precise amount of memory on the heap to store the combined string (plus the null-terminator \0), concatenate them, and return the pointer. In your main function, call this engine, print the result, and ensure no memory leaks occur.
-
+---
 
 ## Assignment 3: Memory Layout Visualizer (Advanced)
 Objective: Contrast the lifespans and addresses of static, stack, and heap memory.
@@ -20,7 +21,7 @@ Objective: Contrast the lifespans and addresses of static, stack, and heap memor
 
 **→ Twist:** 
 Print the hex memory addresses of all three variables. Write a secondary function that attempts to return the pointer of a local variable created inside it back to main, and observe what happens when you try to access it.
-
+---
 
 ## Assignment 4: Building a Fixed-Size Array Container
 Instead of moving straight to complex structures, let's write a clean, modular program that mimics how high-level languages handle arrays safely.
@@ -34,6 +35,7 @@ Instead of moving straight to complex structures, let's write a clean, modular p
 **Implement an Append Function:** Write a function int append(struct SafeArray *array, int value) that adds an element to the next available slot. If the array is full, it should reject the input and return an error code.
 
 **Implement a Safe Display Function:** Write a function to print the elements cleanly.
+---
 
 ## Assignment 5: Building a Dynamic Vector Container
 Write a modular C program that implements a custom integer Vector. 
@@ -44,6 +46,7 @@ Write a modular C program that implements a custom integer Vector.
 3. **Implement Append:** Write int vector_append(struct MyVector *v, int value) that adds elements and automatically doubles the capacity using realloc if the vector fills up.
 4. Implement Display: Write a function to print the current size, capacity, and active elements cleanly.
 5. Implement Cleanup: Write a function to free the heap memory when done to prevent leaks
+---
 
 ## Assignment 6: Manual Node Assembly (The "Hard" Way)
 Write loops or automated insertion functions, your task is to manually create three individual nodes on the heap, link them together by explicitly assigning their next pointers, and print their values.
@@ -61,6 +64,7 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
 
 6. **Hint:** To print the second node's data using only first, you will look at first->next->data.
 7. **Clean Up:** Manually free() all three nodes before exiting.
+---
 
 ## Assignment 7: Building a Dynamic Single Linked List Module
 
@@ -71,6 +75,7 @@ This will force you to see exactly how pointers "chain" from one memory chunk to
 4. **Implement a Traversal Display Function:** Write void display(struct node* head) that uses a while (current != NULL) loop to slide forward and print every active node's data field sequentially.
 5. **Implement a Master Cleanup Function:** Write void free_list(struct node* head) that loops through the 
                             entire list and frees every node individually so you leave zero active blocks on the heap.
+---
 
 ## Assignment 8: The Arbitrary Insertion Challenge
 **Your Task:**  
@@ -82,6 +87,7 @@ Modify your existing Singly Linked List codebase by adding a highly robust inser
 2. **Interactive Menu:** Add a new option to your main() loop: 4) Insert at Position.
 
 3. **Scan with Validation:** Prompt the user for both the target position (index) and the integer value. Validate both inputs using scanf safety patterns.
+---
 
 ## Assignment 9: The Node Deletion Challenge
 Incorporate a robust node deletion function into your current working Singly Linked List codebase.
@@ -95,6 +101,7 @@ true on successful deletion and false if the position is out of bounds or the li
 
    3. **Scan Validation:** Prompt the user for the target index to delete and protect
      the entry using your standard scanf verification logic.
+---
 
 ## Assignment 10: Manual DLL Assembly
 ****Your Objectives:****
@@ -117,6 +124,7 @@ true on successful deletion and false if the position is out of bounds or the li
    5. Print backward through the chain starting only from node3 (using node3->prev->prev->data).
 
 5. **Clean Up safely:** free() all three nodes and defuse their pointers to NULL.
+---
 
 ## Assignment 11: The Dynamic DLL Container Module
 **Your Task:** Write a modular, interactive menu program that implements a custom dynamic integer Doubly Linked List.
@@ -135,6 +143,7 @@ true on successful deletion and false if the position is out of bounds or the li
 4. **Implement Clean Freeing:** Write void free_dll(DLLNode headRef); that wipes all nodes safely and nullifies the main reference.
 
 5. **Interactive Controller:** Build a while(true) terminal loop tracking options: 1) Append, 2) Display Forward, 3) Display Reverse, and 4) Exit. Validate user entry with scanf.
+---
 
 ## Assignment 12: Dynamic Deletion from a Doubly Linked List. 
 Deleting a node from a bi-directional structure requires you to detach both the forward (next) and backward (prev) links of adjacent nodes.
@@ -155,6 +164,7 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
       ```B->next->prev = B->prev; // C's prev pointer now bypasses B and points to A```
 
 5. **Reclaim Memory:** Safe to execute free(B).
+---
 
 ## Assignment 13: The Complete DLL Insertion Module
 
@@ -166,6 +176,7 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
 4. **Interactive Menu Expansion:** Add a new option to your main console loop: 2) Insert Node at specified position. (Shift your subsequent display, delete, and exit menu option numbers downward accordingly).
 
 5. **Input Validation:** Prompt the user for both the integer value and target position, protecting inputs with your standard scanf error traps
+---
 
 ## Assignment 14: Manual Circular Assembly to practice handling loop execution paths safely.
 
@@ -184,3 +195,46 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
    3. The Circular Connection: Wire node3->next = node1; (The loop boundary wrapper).
 4. **Print exactly once:** Write a safe do-while loop pattern that checks when current == node1 on its second pass to stop printing before hitting an infinite loop.
 5. **Break Circle Before Deallocation:** Set node3->next = NULL; explicitly right before you call your free() functions to protect the stack from trace collapse corruption errors.
+---
+
+## Assignment 15: Dynamic CLL Module
+### Build a modular, interactive C program that implements dynamic operations on a Singly Circular Linked List.
+--- 
+### Requirements :
+
+1. **Define a Node Layout.**
+
+2. **Implement Appending:** Write ```bool cllAppend(node** headref, int val);```.
+
+3. **Implement Insertion at Position:** Write ```bool cllInsert(node** headref, int val, int pos);```.
+
+   + *Position 0 Special Case:*  When inserting a new head at index 0, you must update ```*headref = newNode``` **AND** locate the tail node to update ```tail->next = newNode``` so the ring stays connected to the new head!
+
+4. **Imlement Display:** Write ```void displayCLL(const node* head);``` using your verified ```do-while``` loop. 
+
+5. **Implement Freeing:** Write ```void freeCLL(node** headref);``` that locates the tail, breaks the ring ```(tail->next = NULL)```, and then safely deallocates all nodes.
+
+6. **Interactive Controller:** Build a ```while(true)``` terminal menu with options:
+``` 1) Append, 2) Insert at Position, 3) Display, 4) Free List, 5) Exit```. Protect all user inputs with ```scanf``` error traps and ```getchar()``` buffer clearing.
+---
+
+## Assignment 16: The In-Place Singly Linked List Reversal Engine
+### Incorporate an in-place reversal function into a Singly Linked List codebase.
+1. **Reversal Function Signature:** 
+   ```
+   Cbool reverseList(node** headRef);
+   ```
+2. **Algorithm Constraints:** 
+   + Must be done strictly in-place with ```O(1)``` extra memory (do not create a new list or allocate new nodes).
+   + Handle edge cases: return false if headRef == NULL or *headRef == NULL (empty list), and return true with no changes if the list has only 1 node.
+3. **Interactive Menu Expansion:*** 
+   + Build a ```while(true)``` menu loop:
+      1. Append Node
+      2. Display List
+      3. Reverse List
+      4. Free List
+      5. Exit
+4. **Validation & Safety:** 
+   + Protect menu inputs against non-integer inputs ```(while (getchar() != '\n'))```.
+   + Ensure the display function clearly shows the updated head after reversal.
+---
