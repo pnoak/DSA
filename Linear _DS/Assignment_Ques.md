@@ -238,3 +238,27 @@ Imagine we want to delete Node B from a chain consisting of A <-> B <-> C:
    + Protect menu inputs against non-integer inputs ```(while (getchar() != '\n'))```.
    + Ensure the display function clearly shows the updated head after reversal.
 ---
+## Assignment 17: Binary Search with Edge-Case Analysis
+
+Write a C program that fulfills the following specifications:
+
++ **Function Signatures:**
+
+   ```  
+      int binarySearch(const int arr[], int size, int target);
+      int findFirstOccurrence(const int arr[], int size, int target);
+   ```
++ **Requirements:**
+
+   1. Implement standard ```binarySearch``` returning the index of ```target```, or ```-1``` if not found.
+
+   2. Implement ```findFirstOccurrence``` to handle duplicate elements (e.g., in ```[1, 2, 2, 2, 3]```, searching for ```2``` must return index ```1```).
+
+   3. Validate input in ```main()``` with a sorted static array, testing:
+
+      + Element present at start, middle, and end.
+
+      + Element absent (smaller than min, larger than max, and within array range).
+
+      + Empty/single-element arrays.
+---
